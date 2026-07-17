@@ -21,10 +21,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-7)m@l$1@*pyxch&b$#f%q
 # CORRECCIÓN 2: Cambiado automáticamente para que sea False en Render
 DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = []
-RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
-if RENDER_EXTERNAL_HOSTNAME:
-    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+ALLOWED_HOSTS = ['*']  # o ['127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -132,3 +129,7 @@ CHANNEL_LAYERS = {
 CELERY_BROKER_URL = os.environ.get('REDIS_URL', 'redis://127.0.0.1:6379/0')
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://bingo-cooperativa.onrender.com',
+]
