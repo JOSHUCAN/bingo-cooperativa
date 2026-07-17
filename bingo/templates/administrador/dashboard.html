@@ -1,0 +1,43 @@
+{% extends 'comunes/base.html' %}
+
+{% block title %}Consola de Administración Suprema - CoopBingo{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-lg-4 pb-5">
+
+    {% if messages %}
+    <div class="mb-4">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show shadow-sm" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="row g-3 mb-4">
+        <!-- Tarjeta: Total Socios -->
+        <div class="col-6 col-md-3">
+            <div class="card-minimalista p-3 text-center border-start border-primary border-4 h-100">
+                <span class="text-secondary small fw-bold text-uppercase" data-bs-toggle="tooltip" title="Total Socios">Total Socios</span>
+                <h4 class="fw-bold mb-0 text-body">{{ total_socios }}</h4>
+            </div>
+        </div>
+
+        <!-- Tarjeta: Deuda Calle -->
+        <div class="col-6 col-md-3">
+            <div class="card-minimalista p-3 text-center border-start border-danger border-4 h-100">
+                <span class="text-secondary small fw-bold text-uppercase" data-bs-toggle="tooltip" title="Cartera en Mora">Deuda Calle</span>
+                <h4 class="fw-bold mb-0 text-danger">${{ deuda_calle }}</h4>
+            </div>
+        </div>
+
+        <!-- Tarjeta: Bingos Activos (La nueva tarjeta de tu imagen) -->
+        <div class="col-6 col-md-3">
+            <div class="card-minimalista p-3 text-center border-start border-success border-4 h-100">
+                <span class="text-secondary small fw-bold text-uppercase" data-bs-toggle="tooltip" title="Eventos Activos">Bingos Activos</span>
+                <h4 class="fw-bold mb-0 text-success">{{ bingos_activos }}</h4>
+            </div>
+        </div>
+    </div>
